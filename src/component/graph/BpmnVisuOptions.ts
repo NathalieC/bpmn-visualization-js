@@ -13,20 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Graph from './../component/graph/Graph';
-
-export const graph = new Graph(window.document.getElementById('graph'), { activatePanning: true });
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function handleFileSelect(evt: any): void {
-  const f = evt.target.files[0];
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    graph.load(reader.result as string);
-  };
-
-  reader.readAsText(f);
+export default interface BpmnVisuOptions {
+  activatePanning?: boolean;
+  activateOutline?: boolean;
+  activateKeysHandler?: boolean;
 }
-
-document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
