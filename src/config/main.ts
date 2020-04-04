@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import Graph from './../component/graph/Graph';
+import { ZoomOptions } from '../component/graph/BpmnVisuOptions';
 
 export const graph = new Graph(window.document.getElementById('graph'), { activatePanning: true });
 
@@ -30,3 +31,16 @@ function handleFileSelect(evt: any): void {
 }
 
 document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
+
+document.getElementById('btn-zoom-in').onclick = function() {
+  graph.zoom(ZoomOptions.In);
+};
+document.getElementById('btn-zoom-out').onclick = function() {
+  graph.zoom(ZoomOptions.Out);
+};
+document.getElementById('btn-zoom-actual').onclick = function() {
+  graph.zoom(ZoomOptions.Actual);
+};
+document.getElementById('btn-zoom-fit').onclick = function() {
+  graph.zoom(ZoomOptions.Fit);
+};

@@ -18,7 +18,7 @@ import { mxgraph } from 'ts-mxgraph';
 import MxGraphRenderer from '../mxgraph/MxGraphRenderer';
 import { defaultBpmnParser } from '../parser/BpmnParser';
 import { MxGraphFactoryService } from '../../service/MxGraphFactoryService';
-import BpmnVisuOptions from './BpmnVisuOptions';
+import BpmnVisuOptions, { ZoomOptions } from './BpmnVisuOptions';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default class Graph {
@@ -50,6 +50,26 @@ export default class Graph {
       // TODO error handling
       this.mxUtils.alert('Cannot load bpmn diagram: ' + e.message);
       throw e;
+    }
+  }
+
+  // TODO zoom factor should be configurable (in global BpmnVisuOptions)
+  public zoom(options: ZoomOptions): void {
+    switch (options) {
+      case ZoomOptions.Actual:
+        this.graph.zoomActual();
+        break;
+      case ZoomOptions.Fit:
+        this.graph.fit();
+        break;
+      case ZoomOptions.In:
+        this.graph.zoomIn();
+        break;
+      case ZoomOptions.Out:
+        this.graph.zoomOut();
+        break;
+      default:
+        throw new Error('Unsupported zoom option');
     }
   }
 }
