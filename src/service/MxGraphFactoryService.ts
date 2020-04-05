@@ -20,14 +20,17 @@ type MxGraphProperty =
   | 'mxClient'
   | 'mxConstants'
   | 'mxEllipse'
+  | 'mxEvent'
   | 'mxGeometry'
   | 'mxGraph'
   | 'mxGraphModel'
+  | 'mxOutline'
   | 'mxPerimeter'
   | 'mxPoint'
   | 'mxShape'
   | 'mxSvgCanvas2D'
-  | 'mxUtils';
+  | 'mxUtils'
+  | 'mxWindow';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class MxGraphFactoryService {
